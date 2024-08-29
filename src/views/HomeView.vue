@@ -1,26 +1,23 @@
 <script setup lang="ts">
-import { ref, toValue } from 'vue'
+import { ref } from 'vue'
+import type { RecommendStatus, Dish } from '../types'
+import { restaurantStatusList } from '../constants'
 
 interface Restaurant {
   name?: string
-  address?: string
-  status?: RestaurantStatus
+  status?: RecommendStatus
   dishes?: Dish[]
 }
 
-type RestaurantStatus = 'Want to Try' | 'Recommended' | 'Do not Recommend' | 'Must Try'
-
 const restaurantList = ref<Restaurant[]>([])
-const newRestaurant = ref<Restaurant>({})
-
-// How to extract types from type
-const statusList = ['Want to Try', 'Recommended', 'Do not Recommend', 'Must Try']
+const newRestaurant = ref<Restaurant>({
+  status: 'Want to Try'
+})
 
 const addRestaurant = () => {
   restaurantList.value.push({
     name: newRestaurant.value.name,
-    address: '',
-    status: 'Want to Try',
+    status: newRestaurant.value.status,
     dishes: []
   })
 }
@@ -40,20 +37,13 @@ const addRestaurant = () => {
           v-model="newRestaurant.name"
         />
       </div>
-      <div>
-        <label for="restaurant">Restaurant Address</label>
-        <input
-          type="text"
-          id="restaurant-address"
-          name="restaurant-address"
-          v-model="newRestaurant.address"
-        />
-      </div>
 
       <div>
         <label for="restaurant-status">Restaurant Status</label>
         <select name="restaurant-status" id="restaurant-status" v-model="newRestaurant.status">
-          <option v-for="status in statusList" :key="status" :value="status">{{ status }}</option>
+          <option v-for="status in restaurantStatusList" :key="status" :value="status">
+            {{ status }}
+          </option>
         </select>
       </div>
       <button type="submit">Add Restaurant</button>

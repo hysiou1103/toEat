@@ -1,17 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
-interface Dish {
-  name?: string
-  diet?: Diet
-  status?: RecommendStatus
-}
-
-const recommendStatusList = ['Want to Try', 'Recommended', 'Do not Recommend', 'Must Try'] as const
-
-type RecommendStatus = (typeof recommendStatusList)[number]
-
-type Diet = 'Vegetarian' | 'Vegan' | 'Gluten-Free' | 'Dairy-Free'
+import type { Dish } from '../types'
+import { restaurantStatusList } from '../constants'
 
 const dishList = ref<Dish[]>([])
 const newDish = ref<Dish>({
@@ -38,7 +28,7 @@ const addDishes = () => {
       <div>
         <label for="dish-status">Dish Status</label>
         <select name="dish-status" id="dish-status" v-model="newDish.status">
-          <option v-for="status in recommendStatusList" :key="status" :value="status">
+          <option v-for="status in restaurantStatusList" :key="status" :value="status">
             {{ status }}
           </option>
         </select>
