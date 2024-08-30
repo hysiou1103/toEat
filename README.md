@@ -1,6 +1,6 @@
 ### toEat
 
-Vue3 Composition API + TypeScript 的簡易練習，練習內容為跟著[Youtube]([https://code.visualstudio.com/](https://youtu.be/p1eO5dZnp_Q?si=BHp5PFsPyM6xr5V-)) 影片實作。
+Vue3 Composition API + TypeScript 的簡易練習，練習內容為跟著 [Youtube](https://youtu.be/p1eO5dZnp_Q?si=BHp5PFsPyM6xr5V-) 影片實作。
 
 ### as const, keyof, typeof 
 - as const: 為常數斷言，是一種修飾符，表達某 variable 的類型是 不可變的
