@@ -1,39 +1,22 @@
-# toEat
+### toEat
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue3 Composition API + TypeScript 的簡易練習，練習內容為跟著[Youtube]([https://code.visualstudio.com/](https://youtu.be/p1eO5dZnp_Q?si=BHp5PFsPyM6xr5V-)) 影片實作。
 
-## Recommended IDE Setup
+### as const, keyof, typeof 
+- as const: 為常數斷言，是一種修飾符，表達某 variable 的類型是 不可變的
+- keyof: return 類型的 key，並將其轉換為 union type
+- typeof: 提取變數的 type
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+### Indexed Access Types: 用來取得特定屬性的型別
 ```
+  type Person = {
+    name: string;
+    age: number;
+  };
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+  type Name = Person["name"] // string
+  type SomeType = Person["name"|"age"] // string | number
 ```
+- 另一種用法是透過 number 去取得一個 array 元素值的所有類型
+- [官方文件](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html)
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
